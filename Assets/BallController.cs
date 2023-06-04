@@ -16,7 +16,6 @@ public class BallController : MonoBehaviour
     void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
-        
     }
 
     private void Update()
@@ -24,6 +23,11 @@ public class BallController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space) && isPlaying == false)
         {
             ResetBallInRandomDirection();
+        }
+
+        if (rb2D.velocity.magnitude < speed * 0.5f)
+        {
+            ResetBall();
         }
     }
 
@@ -56,9 +60,10 @@ public class BallController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Vector3 newVelocity = vel;
-        newVelocity += new Vector3(Random.Range(-.5f, .5f), Random.Range(-.5f, .5f));
-        rb2D.velocity = Vector3.Reflect(newVelocity.normalized * speed, collision.contacts[0].normal);
+        rb2D.velocity = Vector3.Reflect(vel, collision.contacts[0].normal);
+        Vector3 newVelocityWithOffset = rb2D.velocity;
+        newVelocityWithOffset += new Vector3(Random.Range(-.5f, .5f), Random.Range(-.5f, .5f));
+        rb2D.velocity = newVelocityWithOffset.normalized * speed;
         vel = rb2D.velocity;
     }
 
