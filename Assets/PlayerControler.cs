@@ -22,13 +22,13 @@ public class PlayerControler : MonoBehaviour
     {
 
 
-        if (Input.GetKey(upkey) && transform.position.y < 5)
+        if (Input.GetKey(upkey) && transform.position.y < 13)
         {
             transform.position += Vector3.up * Time.deltaTime * speed;
 
         }
 
-        if (Input.GetKey(downkey) && transform.position.y > -5)
+        if (Input.GetKey(downkey) && transform.position.y > -13)
 
         {
             transform.position += Vector3.down * Time.deltaTime * speed; 
