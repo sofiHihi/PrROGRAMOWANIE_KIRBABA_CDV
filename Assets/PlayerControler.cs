@@ -6,9 +6,8 @@ public class PlayerControler : MonoBehaviour
 {
 
 
-    public float speed = 5f;
+    public float speed = 6f;
     public KeyCode upkey = KeyCode.W;
-
     public KeyCode downkey = KeyCode.S;
 
     // Start is called before the first frame update
@@ -22,20 +21,20 @@ public class PlayerControler : MonoBehaviour
     {
 
 
-        if (Input.GetKey(upkey) && transform.position.y < 13)
+        if (Input.GetKey(upkey) && transform.position.y < 3.5)
         {
             transform.position += Vector3.up * Time.deltaTime * speed;
 
         }
 
-        if (Input.GetKey(downkey) && transform.position.y > -13)
+        if (Input.GetKey(downkey) && transform.position.y > -3.5)
 
         {
-            transform.position += Vector3.down * Time.deltaTime * speed; 
-        
+            transform.position += Vector3.down * Time.deltaTime * speed;
+
         }
 
-      
+
 
     }
 }
